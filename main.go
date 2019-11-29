@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 
@@ -27,4 +28,12 @@ func main() {
 	}
 
 	client := spotify.Authenticator{}.NewClient(token)
+	page, err := client.GetPlaylistsForUser("dodwei")
+	if err != nil {
+		log.Fatalf("couldn't get features playlists: %v", err)
+	}
+
+	for _, playlist := range page.Playlists {
+		fmt.Println("  ", playlist.Name)
+	}
 }
