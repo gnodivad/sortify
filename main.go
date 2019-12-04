@@ -34,6 +34,6 @@ func main() {
 	}
 
 	for _, playlist := range page.Playlists {
-		fmt.Println("  ", playlist.Name)
+		fmt.Println(playlist.Name, " ", playlist.ID)
 	}
 }
