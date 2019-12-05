@@ -1,4 +1,4 @@
-module gnodivad/spot-spotify
+module gnodivad/sortify
 
 go 1.13
 

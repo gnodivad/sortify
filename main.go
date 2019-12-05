@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	"gnodivad/sortify/src/config"
 	"log"
 	"net/http"
 
-	"github.com/joho/godotenv"
 	"github.com/zmb3/spotify"
 )
 
@@ -15,7 +15,6 @@ import (
 const redirectURI = "http://localhost:8080/callback"
 
 var (
-	err   = godotenv.Load()
 	auth  = spotify.NewAuthenticator(redirectURI, spotify.ScopeUserReadPrivate)
 	ch    = make(chan *spotify.Client)
 	state = "abc123"
@@ -23,6 +22,8 @@ var (
 
 func main() {
 	// first start an HTTP server
+	conf := config.Init()
+	auth.SetAuthInfo(conf.Spotify.ClientID, conf.Spotify.SecretKey)
 	http.HandleFunc("/callback", completeAuth)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		log.Println("Got request for:", r.URL.String())
