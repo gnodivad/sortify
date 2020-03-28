@@ -3,6 +3,7 @@ module gnodivad/sortify
 go 1.14
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/go-chi/chi v4.0.4+incompatible
 	github.com/golang/protobuf v1.3.5 // indirect
 	github.com/joho/godotenv v1.3.0

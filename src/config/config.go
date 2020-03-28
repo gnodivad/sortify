@@ -12,8 +12,13 @@ type SpotifyConfig struct {
 	SecretKey string
 }
 
+type JwtConfig struct {
+	SecretKey string
+}
+
 type Config struct {
 	Spotify SpotifyConfig
+	Jwt     JwtConfig
 }
 
 func Init() *Config {
@@ -26,6 +31,9 @@ func Init() *Config {
 		Spotify: SpotifyConfig{
 			ClientID:  getEnv("SPOTIFY_ID", ""),
 			SecretKey: getEnv("SPOTIFY_SECRET", ""),
+		},
+		Jwt: JwtConfig{
+			SecretKey: getEnv("JWT_SECRET", ""),
 		},
 	}
 }

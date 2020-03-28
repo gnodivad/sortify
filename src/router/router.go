@@ -1,9 +1,10 @@
 package router
 
 import (
-	"github.com/go-chi/chi"
 	"gnodivad/sortify/src/api"
 	"net/http"
+
+	"github.com/go-chi/chi"
 )
 
 func Init() http.Handler {
@@ -11,6 +12,7 @@ func Init() http.Handler {
 
 	r.Get("/login", api.StartAuth)
 	r.Get("/callback", api.CompleteAuth)
+	r.Get("/welcome", api.Welcome)
 
 	return r
 }
